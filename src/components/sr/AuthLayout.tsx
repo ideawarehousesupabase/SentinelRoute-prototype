@@ -1,4 +1,4 @@
-import { Logo, PrototypeBanner } from "./primitives";
+import { Logo } from "./primitives";
 
 export function AuthLayout({
   children,
@@ -21,9 +21,7 @@ export function AuthLayout({
             Smart seals · mobile capture · chained ledger · anomaly review
           </p>
         </div>
-        <p className="text-xs text-navy-muted">
-          Prototype demonstration — not independently verified.
-        </p>
+        <div />
       </div>
       <div className="flex items-center justify-center p-6">
         <div className="w-full max-w-sm">
@@ -32,8 +30,7 @@ export function AuthLayout({
           </div>
           <h1 className="text-2xl font-semibold">{title}</h1>
           <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
-          <PrototypeBanner className="my-5" />
-          {children}
+          <div className="mt-6">{children}</div>
         </div>
       </div>
     </div>

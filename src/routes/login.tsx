@@ -4,6 +4,7 @@ import { z } from "zod";
 import { AlertCircle, CheckCircle2, Building2, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Field, Spinner } from "@/components/sr/primitives";
 import { AuthLayout } from "@/components/sr/AuthLayout";
 import { signInAccount } from "@/lib/accounts";
@@ -14,15 +15,15 @@ import type { Role } from "@/lib/types";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Sign in — SentinelRoute demo" },
+      { title: "Sign in — SentinelRoute" },
       {
         name: "description",
-        content: "Demo-only sign-in for SentinelRoute partner operators and drivers.",
+        content: "Sign in for SentinelRoute partner operators and drivers.",
       },
-      { property: "og:title", content: "Sign in — SentinelRoute demo" },
+      { property: "og:title", content: "Sign in — SentinelRoute" },
       {
         property: "og:description",
-        content: "Access the SentinelRoute prototype as a partner operator or driver.",
+        content: "Access the SentinelRoute platform as a partner operator or driver.",
       },
     ],
   }),
@@ -84,20 +85,21 @@ function LoginPage() {
   };
 
   return (
-    <AuthLayout title="Sign in" subtitle="Use the disposable demo credential you registered with.">
+    <AuthLayout title="Sign in" subtitle="Enter your email and password to sign in.">
       <form onSubmit={submit} className="space-y-4" noValidate>
         <Field label="Email" error={errors.email}>
           <Input
             type="email"
-            autoComplete="off"
+            autoComplete="email"
+            placeholder="name@example.com"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
         </Field>
-        <Field label="Demo credential" error={errors.credential} hint="Never use a real password.">
-          <Input
-            type="password"
-            autoComplete="off"
+        <Field label="Password" error={errors.credential}>
+          <PasswordInput
+            autoComplete="current-password"
+            placeholder="Enter your password"
             value={form.credential}
             onChange={(e) => setForm({ ...form, credential: e.target.value })}
           />
@@ -119,7 +121,7 @@ function LoginPage() {
         </Button>
       </form>
       <p className="mt-4 text-center text-sm text-muted-foreground">
-        No demo account?{" "}
+        Don't have an account?{" "}
         <Link
           to="/register"
           className="font-medium text-primary underline-offset-4 hover:underline"
@@ -129,7 +131,7 @@ function LoginPage() {
       </p>
       <div className="mt-8 border-t pt-5">
         <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-          Offline demo access
+          Quick test access
         </p>
         <div className="grid grid-cols-2 gap-2">
           <Button variant="outline" onClick={() => quick(0)}>
@@ -139,10 +141,6 @@ function LoginPage() {
             <Truck /> Driver
           </Button>
         </div>
-        <p className="mt-3 text-xs text-muted-foreground">
-          Demo-only flow. Browser-side checks are not secure production authentication; that
-          requires trusted backend verification.
-        </p>
       </div>
     </AuthLayout>
   );

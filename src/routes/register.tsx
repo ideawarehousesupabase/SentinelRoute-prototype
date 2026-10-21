@@ -5,6 +5,7 @@ import { AlertCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Field, Spinner, selectClass } from "@/components/sr/primitives";
 import { registerAccount } from "@/lib/accounts";
 import { saveSession } from "@/lib/session";
@@ -13,15 +14,15 @@ import { AuthLayout } from "@/components/sr/AuthLayout";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Create demo account — SentinelRoute" },
+      { title: "Create account — SentinelRoute" },
       {
         name: "description",
-        content: "Create a disposable demonstration account for the SentinelRoute prototype.",
+        content: "Create an account for the SentinelRoute platform.",
       },
-      { property: "og:title", content: "Create demo account — SentinelRoute" },
+      { property: "og:title", content: "Create account — SentinelRoute" },
       {
         property: "og:description",
-        content: "Register a demo partner operator or driver account.",
+        content: "Register a partner operator or driver account.",
       },
     ],
   }),
@@ -40,7 +41,7 @@ const schema = z
   })
   .refine((d) => d.credential === d.confirm, {
     path: ["confirm"],
-    message: "Credentials do not match",
+    message: "Passwords do not match",
   });
 
 function RegisterPage() {
@@ -78,7 +79,7 @@ function RegisterPage() {
         role: acc.role,
         offline: false,
       });
-      toast.success("Demo account created");
+      toast.success("Account created");
       navigate({ to: acc.role === "partner_operator" ? "/partner" : "/driver" });
     } catch (err) {
       setError((err as Error).message);
@@ -88,29 +89,32 @@ function RegisterPage() {
   };
 
   return (
-    <AuthLayout
-      title="Create demo account"
-      subtitle="Use disposable details only — no real passwords or personal data."
-    >
+    <AuthLayout title="Create account" subtitle="Enter your details to create an account.">
       <form onSubmit={submit} className="space-y-4" noValidate>
         <Field label="Full name" error={errors.fullName}>
-          <Input value={form.fullName} onChange={set("fullName")} />
+          <Input value={form.fullName} onChange={set("fullName")} placeholder="e.g. Alex Morgan" />
         </Field>
         <Field label="Email address" error={errors.email}>
-          <Input type="email" autoComplete="off" value={form.email} onChange={set("email")} />
-        </Field>
-        <Field label="Demo credential" error={errors.credential}>
           <Input
-            type="password"
-            autoComplete="off"
+            type="email"
+            autoComplete="email"
+            placeholder="alex@example.com"
+            value={form.email}
+            onChange={set("email")}
+          />
+        </Field>
+        <Field label="Password" error={errors.credential}>
+          <PasswordInput
+            autoComplete="new-password"
+            placeholder="At least 6 characters"
             value={form.credential}
             onChange={set("credential")}
           />
         </Field>
-        <Field label="Confirm demo credential" error={errors.confirm}>
-          <Input
-            type="password"
-            autoComplete="off"
+        <Field label="Confirm password" error={errors.confirm}>
+          <PasswordInput
+            autoComplete="new-password"
+            placeholder="Confirm your password"
             value={form.confirm}
             onChange={set("confirm")}
           />
@@ -133,7 +137,7 @@ function RegisterPage() {
         </Button>
       </form>
       <p className="mt-4 text-center text-sm text-muted-foreground">
-        Already registered?{" "}
+        Already have an account?{" "}
         <Link to="/login" className="font-medium text-primary hover:underline">
           Sign In
         </Link>

@@ -11,7 +11,6 @@ import {
   Panel,
   SealIndicator,
   VerificationBadge,
-  PrototypeBanner,
 } from "@/components/sr/primitives";
 import { PublicShell } from "@/components/sr/PublicHeader";
 import { CustodyTimeline } from "@/components/sr/CustodyTimeline";
@@ -130,7 +129,6 @@ function TrackPage() {
                 </Link>
               </Button>
             ) : null}
-            <PrototypeBanner />
           </div>
           <Panel title="Custody timeline" className="lg:col-span-2">
             <CustodyTimeline events={eventsFor(job.id)} publicView />

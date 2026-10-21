@@ -1,12 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight, MapPin, Clock } from "lucide-react";
-import {
-  EmptyState,
-  JobStatusBadge,
-  PrototypeBanner,
-  fmt,
-  selectClass,
-} from "@/components/sr/primitives";
+import { EmptyState, JobStatusBadge, fmt, selectClass } from "@/components/sr/primitives";
 import { useDemo } from "@/state/demo-store";
 import { useDriverProfile } from "@/lib/use-driver-profile";
 import type { CustodyJob } from "@/lib/types";
@@ -50,7 +44,6 @@ function DriverJobs() {
           </select>
         </label>
       </div>
-      <PrototypeBanner />
       <Section title="Active" jobs={active} />
       <Section title="Assigned" jobs={assigned} />
       <Section title="Completed" jobs={done} />

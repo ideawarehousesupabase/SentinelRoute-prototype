@@ -110,9 +110,6 @@ function CertificatePage() {
                 <p className="font-mono text-sm font-medium">{certificateRefFor(job)}</p>
               </div>
             </header>
-            <p className="mt-4 rounded-md border border-warning/40 bg-warning/10 px-3 py-2 text-center text-xs font-semibold uppercase tracking-wider text-warning-foreground">
-              Prototype Demonstration — Not Independently Verified
-            </p>
             <dl className="mt-6 grid gap-x-8 gap-y-4 text-sm sm:grid-cols-2">
               <Item k="Job reference" v={job.reference} mono />
               <Item k="Item description" v={job.itemDescription} />

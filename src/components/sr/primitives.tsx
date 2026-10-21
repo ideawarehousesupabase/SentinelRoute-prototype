@@ -29,22 +29,11 @@ export function Logo({ className, light }: { className?: string; light?: boolean
   );
 }
 
-export function PrototypeBanner({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "flex items-center gap-2 rounded-lg border border-warning/40 bg-warning/10 px-3 py-2 text-xs text-warning-foreground",
-        className,
-      )}
-    >
-      <FlaskConical className="h-4 w-4 shrink-0" />
-      <span>
-        Prototype demonstration — simulated data and workflows. Not a production verification
-        service.
-      </span>
-    </div>
-  );
+export function PrototypeBanner(_props?: { className?: string }) {
+  return null;
 }
+
+export { PasswordInput } from "@/components/ui/password-input";
 
 type Tone = "neutral" | "info" | "success" | "warning" | "danger";
 const tones: Record<Tone, string> = {

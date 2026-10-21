@@ -5,7 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Field, PageHeader, Panel, PrototypeBanner } from "@/components/sr/primitives";
+import { Field, PageHeader, Panel } from "@/components/sr/primitives";
 import { PublicShell } from "@/components/sr/PublicHeader";
 import { useDemo } from "@/state/demo-store";
 import type { CustodyJob } from "@/lib/types";
@@ -68,7 +68,6 @@ function BookPage() {
         title="Direct booking"
         description="Secondary booking channel for SMEs and individuals. Demonstration only — no driver is dispatched and no payment is taken."
       />
-      <PrototypeBanner className="mb-6" />
       {done ? (
         <Panel>
           <div className="flex flex-col items-center py-6 text-center">

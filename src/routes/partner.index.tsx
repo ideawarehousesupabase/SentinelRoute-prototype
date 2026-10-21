@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Boxes, Activity, CheckCircle2, ShieldAlert, BadgeCheck } from "lucide-react";
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Button } from "@/components/ui/button";
-import { MetricCard, PageHeader, Panel, PrototypeBanner } from "@/components/sr/primitives";
+import { MetricCard, PageHeader, Panel } from "@/components/sr/primitives";
 import { JobTable } from "@/components/sr/JobTable";
 import { useDemo } from "@/state/demo-store";
 import type { JobStatus } from "@/lib/types";
@@ -44,7 +44,7 @@ function Dashboard() {
     <>
       <PageHeader
         title="Dashboard"
-        description="Overview of custody-verification activity across your demonstration jobs."
+        description="Overview of custody-verification activity across your jobs."
         action={
           <Button asChild>
             <Link to="/partner/jobs" search={{ create: true }}>
@@ -53,7 +53,6 @@ function Dashboard() {
           </Button>
         }
       />
-      <PrototypeBanner className="mb-6" />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <MetricCard
           label="Total Custody Jobs"

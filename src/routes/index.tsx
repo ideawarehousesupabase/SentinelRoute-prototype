@@ -10,7 +10,7 @@ import {
   ScanEye,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Logo, PrototypeBanner } from "@/components/sr/primitives";
+import { Logo } from "@/components/sr/primitives";
 import hero from "@/assets/hero-seal.jpg";
 
 export const Route = createFileRoute("/")({
@@ -105,7 +105,6 @@ function Index() {
       </section>
 
       <main className="mx-auto max-w-6xl px-4 py-12">
-        <PrototypeBanner className="mb-10" />
         <div className="grid gap-4 md:grid-cols-4">
           {pillars.map((p) => (
             <div key={p.title} className="rounded-xl border bg-card p-5 shadow-card">

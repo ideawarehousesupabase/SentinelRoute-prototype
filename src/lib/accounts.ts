@@ -66,10 +66,10 @@ export async function signInAccount(email: string, credential: string): Promise<
   try {
     const db = await getDb();
     const snap = await getDoc(doc(db, COLLECTION, await docIdFor(email)));
-    if (!snap.exists()) throw new AccountError("No demo account found for that email.");
+    if (!snap.exists()) throw new AccountError("No account found for that email.");
     const acc = snap.data() as DemoAccount;
     if (acc.demoCredentialVerifier !== (await verifierFor(email, credential)))
-      throw new AccountError("Demo credential does not match.");
+      throw new AccountError("Password does not match.");
     return acc;
   } catch (e) {
     friendly(e);
